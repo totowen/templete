@@ -34,16 +34,21 @@ public class CodeCounter {
             bufferedReader =  new BufferedReader(new FileReader(file));
             String line = "";
             while((line = bufferedReader.readLine())!=null){
+                line = line.trim();
                 if(line.matches("^[\\s&&[^\\n]]*$")){ //空的并且不是反斜杠n
                     whiteLines ++;
                 }else if (line.startsWith("/*") && !line.endsWith("*/")){  //TODO 只有在"/*"顶格的情况下才行，否则不能判定为注释的开始位置
                     commentLines ++;
                     comment = true;
+                }else if (line.startsWith("/*") && line.endsWith("*/")){  //TODO 只有在"/*"顶格的情况下才行，否则不能判定为注释的开始位置
+                    commentLines ++;
                 }else if(comment){
                     commentLines ++;
                     if(line.endsWith("*/")){
                         comment = false;
                     }
+                }else if(line.startsWith("//")){
+                    commentLines++;
                 }else {
                     normalLines ++;
                 }

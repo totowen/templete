@@ -113,12 +113,12 @@ public class RegexETests {
             p(m.group(2));
         }*/
 
-        String s = "123@qq.comssdad  sdfsadfasgsdfsadf abcd@163.com";
+        /*String s = "123@qq.comssdad  sdfsadfasgsdfsadf abcd@163.com";
         Pattern p = Pattern.compile("([\\w[.-]]+)(@[\\w[.-]]+\\.[\\w]+)");
         Matcher m = p.matcher(s);
         while(m.find()){
             p(m.group(2));
-        }
+        }*/
 
     }
 
