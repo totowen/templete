@@ -2,7 +2,10 @@
 <h2>1)Swagger2<br />
 2)RabbitMQ<br />
 3)JWT+Spring Security<br />
-4)Quartz<br />
-5)WebLogAspect<br />
-6)StateMachineConfig<br />
-7)Redis</h2>
+4)使用@Scheduled创建定时任务<br />
+5)使用@Async实现异步调用
+6)WebLogAspect<br />
+7)Spring StateMachine<br />
+8)Redis<br />
+9)log4j2<br />
+10)Email</h2>
