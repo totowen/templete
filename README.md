@@ -1,8 +1,8 @@
- **Spring Boot整合内容**
-    1)Swagger2
-    2)RabbitMQ
-    3)JWT+Spring Security
-    4)Quartz
-    5)WebLogAspect
-    6)StateMachineConfig
-    7)Redis
+ <h1>Spring Boot整合内容<br />
+# 1)Swagger2<br />
+# 2)RabbitMQ<br />
+# 3)JWT+Spring Security<br />
+# 4)Quartz<br />
+# 5)WebLogAspect<br />
+# 6)StateMachineConfig<br />
+# 7)Redis<br />
