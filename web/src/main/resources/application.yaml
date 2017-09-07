@@ -1,7 +1,11 @@
 #调用开发环境配置
 spring:
  .profiles:
-  active: test
+  active: dev
+
+ .boot:
+  admin:
+   url: http://localhost:8080
 
 # 页面默认前缀目录
  .jpa:
@@ -94,6 +98,13 @@ management:
 #root日志以WARN级别输出
 #logging.level.root=WARN
 ########################默认日志配置 END##############################
+
+#########################日志配置 START####################################
+logging:
+ config: classpath:log4j2.xml
+ path: ../temp
+ file: CL_BATCH.log
+#########################日志配置 END#######################################
 
 ########################RabbitMq START################################
  .application:
