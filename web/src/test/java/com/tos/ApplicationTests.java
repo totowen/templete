@@ -8,8 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -34,11 +32,11 @@ public class ApplicationTests {
    /* @Autowired
     private RoleRepository roleRepository;*/
 
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-
-    @Autowired
-    private RedisTemplate redisTemplate;
+//    @Autowired
+//    private StringRedisTemplate stringRedisTemplate;
+//
+//    @Autowired
+//    private RedisTemplate redisTemplate;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -84,11 +82,11 @@ public class ApplicationTests {
     }*/
 
 
-    @Test
-    public void test1() throws Exception {
-        stringRedisTemplate.opsForValue().set("aaa", "111");
-        Assert.assertEquals("111", stringRedisTemplate.opsForValue().get("aaa"));
-    }
+//    @Test
+//    public void test1() throws Exception {
+//        stringRedisTemplate.opsForValue().set("aaa", "111");
+//        Assert.assertEquals("111", stringRedisTemplate.opsForValue().get("aaa"));
+//    }
 
 
 

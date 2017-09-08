@@ -1,14 +1,29 @@
 #调用开发环境配置
+---
 spring:
- .profiles:
+ profiles:
   active: dev
 
- .boot:
+---
+spring:
+ application:
+  name: "templete"
+ boot:
   admin:
-   url: http://localhost:8080
+   url: http://localhost:8083
+info:
+ name: client
+ description: @project.description@
+ version: @project.version@
+endpoints:
+ trace:
+  enabled: true
+  sensitive: false
 
+---
 # 页面默认前缀目录
- .jpa:
+spring:
+ jpa:
   properties:
    hibernate:
     hbm2ddl:
@@ -18,24 +33,12 @@ spring:
 #EhCache的配置文件(对于EhCache的配置文件也可以通过application.properties文件中使用spring.cache.ehcache.config属性来指定，比如：)
 #spring.cache.ehcache.config=classpath:config/another-config.xml
 
-##########################JWT-start#############################
-# JWT
-jwt:
- expiration: 604800
- header: Authorization
- secret: mySecret
- tokenHead: Bearer
- route:
-  authentication:
-   path: auth
-   refresh: refresh
-   register: "auth/register"
-##########################JWT-end#############################
-
 ########################redis-start#############################
 # REDIS (RedisProperties)
 # Redis数据库索引（默认为0）
- .redis:
+---
+spring:
+ redis:
   database: 0
 # Redis服务器地址
   host: localhost
@@ -57,7 +60,9 @@ jwt:
 ########################redis-end###########################
 
 ##################JavaMailSender-start#####################
- .mail:
+---
+spring:
+ mail:
   host: smtp.qq.com
   username: 136248471@qq.com
   password: vucynzuinkpacadh
@@ -71,13 +76,8 @@ jwt:
       required: true
 ###################JavaMailSender-end####################
 
-#指定加载的log文件位置
-#logging.config=classpath:log4j2.xml
 
-#关闭安全认证校验 (false 为关闭，需要与com.tos.secruity.WebSecurityConfigd的@EnableGlobalMethodSecurity(prePostEnabled = false)配合使用才有效)
-management:
- security:
-  enabled: false
+
 
 #debug=true
 
@@ -85,33 +85,58 @@ management:
 #NEVER：禁用ANSI-colored输出（默认项）
 #DETECT：会检查终端是否支持ANSI，是的话就采用彩色输出（推荐项）
 #ALWAYS：总是使用ANSI-colored格式输出，若终端不支持的时候，会有很多干扰信息，不推荐使用
-#spring.output.ansi.enabled=Always
+---
+spring:
+ output:
+  ansi:
+   enabled: Always
 
 #设置文件，可以是绝对路径，也可以是相对路径。
-#logging.file=my.log
+---
+logging:
+  file: "target/mylog.log"
 
 #logging.level：日志级别控制前缀，*为包名或Logger名
 #LEVEL：选项TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
 #com.tos包下所有class以DEBUG级别输出
-#logging.level.com.tos=DEBUG
+---
+#logging:
+# .level:
+#  com:
+#   tos: DEBUG
 
 #root日志以WARN级别输出
 #logging.level.root=WARN
 ########################默认日志配置 END##############################
 
-#########################日志配置 START####################################
-logging:
- config: classpath:log4j2.xml
- path: ../temp
- file: CL_BATCH.log
-#########################日志配置 END#######################################
+
 
 ########################RabbitMq START################################
- .application:
-  name: security_demo
- .rabbitmq:
+---
+spring:
+ rabbitmq:
   host: localhost
   port: 5672
   username: guest
   password: guest
 ########################RabbitMq END##################################
+
+#关闭安全认证校验 (false 为关闭，需要与com.tos.secruity.WebSecurityConfigd的@EnableGlobalMethodSecurity(prePostEnabled = false)配合使用才有效)
+management:
+ security:
+  enabled: false
+
+##########################JWT-start#############################
+# JWT
+---
+jwt:
+ expiration: 604800
+ header: Authorization
+ secret: mySecret
+ tokenHead: Bearer
+ route:
+  authentication:
+   path: auth
+   refresh: refresh
+   register: "auth/register"
+##########################JWT-end#############################
