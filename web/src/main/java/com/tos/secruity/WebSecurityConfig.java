@@ -18,22 +18,32 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = false)
+@EnableGlobalMethodSecurity(prePostEnabled = true) //安全开关
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+
 
     @Autowired
     private JwtAuthenticationEntryPoint unauthorizedHandler;
 
+    /**
+     * Spring会自动寻找同样类型的具体类注入，这里就是JwtUserDetailsServiceImpl了
+     */
     @Autowired
     private UserDetailsService userDetailsService;
 
     @Autowired
     public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
+                // 设置UserDetailsService
                 .userDetailsService(this.userDetailsService)
+                // 使用BCrypt进行密码的hash
                 .passwordEncoder(passwordEncoder());
     }
 
+    /**
+     * 装载BCrypt密码编码器
+     * @return
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -52,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 
-                // 基于token，所以不需要session
+                // 基于token，所以不需要session ,stateless 不储存状态
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
                 .authorizeRequests()

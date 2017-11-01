@@ -1,7 +1,9 @@
 package com.tos;
 
-import com.tos.amqp.Sender;
-import org.junit.Assert;
+import com.tos.controller.UserController;
+import com.tos.dao.RoleRepository;
+import com.tos.domain.Role;
+import com.tos.web.Content;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +15,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import javax.mail.internet.MimeMessage;
 import java.io.File;
 
 /**
@@ -29,8 +31,8 @@ public class ApplicationTests {
    /* @Autowired
     private UserRepository userRepository;*/
 
-   /* @Autowired
-    private RoleRepository roleRepository;*/
+    @Autowired
+    private RoleRepository roleRepository;
 
 //    @Autowired
 //    private StringRedisTemplate stringRedisTemplate;
@@ -43,7 +45,7 @@ public class ApplicationTests {
 
     @Before
     public void setUp() throws Exception {
-//        mvc = MockMvcBuilders.standaloneSetup(new UserController()).build();
+        mvc = MockMvcBuilders.standaloneSetup(new UserController()).build();
         //  ，清空user表
 //        userSerivce.deleteAllUsers();
        /* User u1 = userRepository.findByUsername("AAA");
@@ -54,13 +56,13 @@ public class ApplicationTests {
 
     }
 
-    @Autowired
+    /*@Autowired
     private Sender sender;
 
     @Test
     public void hello() throws Exception {
         sender.send();
-    }
+    }*/
 
 
    /* @Test
@@ -71,7 +73,7 @@ public class ApplicationTests {
         System.out.println("第二次查询：" + u2.getEmail());
     }*/
 
-   /* @Test
+    @Test
     public void testsaveUser(){
         Role role = new Role();
         role.setRole(Content.ROLE_USER);
@@ -79,7 +81,7 @@ public class ApplicationTests {
 
         Role oneByRole = roleRepository.findOneByRole(Content.ROLE_USER);
         System.out.println(oneByRole);
-    }*/
+    }
 
 
 //    @Test
@@ -90,7 +92,7 @@ public class ApplicationTests {
 
 
 
-    @Test
+    /*@Test
     public void sendSimpleMail() throws Exception {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("136248471@qq.com");
@@ -98,9 +100,9 @@ public class ApplicationTests {
         message.setSubject("主题：简单邮件");
         message.setText("测试邮件内容");
         mailSender.send(message);
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void sendAttachmentsMail() throws Exception {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
@@ -112,13 +114,13 @@ public class ApplicationTests {
         helper.addAttachment("附件-1.jpg", file);
         helper.addAttachment("附件-2.jpg", file);
         mailSender.send(mimeMessage);
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void sendInlineMail() throws Exception {
-        /**
+        *//**
          * 这里需要注意的是addInline函数中资源名称weixin需要与正文中cid:weixin对应起来
-         */
+         *//*
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
         helper.setFrom("136248471@qq.com");
@@ -128,6 +130,6 @@ public class ApplicationTests {
         FileSystemResource file = new FileSystemResource(new File("G:\\images\\153_170320163303_2_lit.jpg"));
         helper.addInline("153_170320163303_2_lit", file);
         mailSender.send(mimeMessage);
-    }
+    }*/
 
 }

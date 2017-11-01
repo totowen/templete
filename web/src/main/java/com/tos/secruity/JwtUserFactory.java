@@ -11,16 +11,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 
-
+/**
+ * 为了写起来简单，我们写一个工厂类来由领域对象创建 JwtUser，这个工厂就叫 JwtUserFactory
+ */
 public final class JwtUserFactory {
-
-
 
     private JwtUserFactory() {
 
     }
-
-
 
     public static JwtUser create(User user) {
 
@@ -41,8 +39,6 @@ public final class JwtUserFactory {
         );
 
     }
-
-
 
     private static List<GrantedAuthority> mapToGrantedAuthorities(List<String> authorities) {
 
