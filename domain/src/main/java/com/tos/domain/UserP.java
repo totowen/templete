@@ -12,7 +12,8 @@ import java.util.List;
  */
 @Entity
 @Data
-public class User implements Serializable{
+public class UserP implements Serializable{
+
 
     @Id
     @GeneratedValue

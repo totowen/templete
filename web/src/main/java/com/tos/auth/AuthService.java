@@ -1,13 +1,13 @@
 package com.tos.auth;
 
 
-import com.tos.domain.User;
+import com.tos.domain.UserP;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface AuthService {
 
     @Transactional
-    User register(User userToAdd);
+    UserP register(UserP userToAdd);
 
     @Transactional
     String login(String username, String password);

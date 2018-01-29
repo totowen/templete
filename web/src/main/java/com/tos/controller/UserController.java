@@ -1,7 +1,7 @@
 package com.tos.controller;
 
 import com.tos.dao.UserRepository;
-import com.tos.domain.User;
+import com.tos.domain.UserP;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -34,7 +34,7 @@ public class UserController {
     @ApiOperation(value="获取用户列表", notes="")
     @PreAuthorize("hasRole('USER')")
     @RequestMapping(method = RequestMethod.GET)
-    public List<User> getUsers() {
+    public List<UserP> getUsers() {
 
         return repository.findAll();
 
@@ -45,7 +45,7 @@ public class UserController {
     @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
-    User addUser(@RequestBody User addedUser) {
+    UserP addUser(@RequestBody UserP addedUser) {
 
         return repository.save(addedUser);
 
@@ -56,7 +56,7 @@ public class UserController {
     @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")
     @PostAuthorize("returnObject.username == principal.username or hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public User getUser(@PathVariable Long id) {
+    public UserP getUser(@PathVariable Long id) {
 
         return repository.findOne(id);
 
@@ -70,7 +70,7 @@ public class UserController {
     })
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    User updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
+    UserP updateUser(@PathVariable Long id, @RequestBody UserP updatedUser) {
 
         updatedUser.setId(id);
 
@@ -83,9 +83,9 @@ public class UserController {
     @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    User removeUser(@PathVariable Long id) {
+    UserP removeUser(@PathVariable Long id) {
 
-        User deletedUser = repository.findOne(id);
+        UserP deletedUser = repository.findOne(id);
 
         repository.delete(id);
 
@@ -97,7 +97,7 @@ public class UserController {
 
     @PostAuthorize("returnObject.username == principal.username or hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/",method = RequestMethod.GET)
-    public User getUserByUsername(@RequestParam(value="username") String username) {
+    public UserP getUserByUsername(@RequestParam(value="username") String username) {
 
         return repository.findByUsername(username);
 

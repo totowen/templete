@@ -70,7 +70,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
 
-    public User register(User userToAdd) {
+    public UserP register(UserP userToAdd) {
 
         final String username = userToAdd.getUsername();
 

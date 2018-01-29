@@ -1,7 +1,7 @@
 package com.tos;
 
 import com.tos.dao.UserPageRepository;
-import com.tos.domain.User;
+import com.tos.domain.UserP;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,11 +31,11 @@ public class UserPageTest {
         PageRequest pageRequest = new PageRequest(1,2);
 
         //根据名称进行查询
-        Page<User> stus = userPageRepository.findByUsername("AAA",pageRequest);
+        Page<UserP> stus = userPageRepository.findByUsername("AAA",pageRequest);
         Assert.assertEquals(1,stus.getTotalPages());//目标页
         Assert.assertEquals(2,stus.getTotalElements()); //返回实例格式
         Assert.assertEquals(1,stus.getNumber());//总页数
-        List<User> content = stus.getContent();
+        List<UserP> content = stus.getContent();
         System.out.println(content);
 
         Assert.assertEquals("111", "111");
@@ -45,7 +45,7 @@ public class UserPageTest {
     @Test
     public void testSort() {
         //设置排序方式为name降序
-        List<User> stus = userPageRepository.findByUsername("AAA"
+        List<UserP> stus = userPageRepository.findByUsername("AAA"
                 ,new Sort(Sort.Direction.ASC,"username"));
         Assert.assertEquals(2,stus.get(0).getId()+0);
 /*

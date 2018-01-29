@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-import com.tos.domain.User;
+import com.tos.domain.UserP;
 import org.springframework.security.core.GrantedAuthority;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +20,7 @@ public final class JwtUserFactory {
 
     }
 
-    public static JwtUser create(User user) {
+    public static JwtUser create(UserP user) {
 
         return new JwtUser(
 

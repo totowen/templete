@@ -1,6 +1,6 @@
 package com.tos.dao;
 
-import com.tos.domain.User;
+import com.tos.domain.UserP;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -14,10 +14,10 @@ import java.util.List;
  * @date 2017/10/20.
  */
 @Repository
-public interface UserPageRepository extends PagingAndSortingRepository<User,Long> {
+public interface UserPageRepository extends PagingAndSortingRepository<UserP,Long> {
 
-    Page<User> findByUsername(String username, Pageable pageable);
+    Page<UserP> findByUsername(String username, Pageable pageable);
 
-    List<User> findByUsername(String username, Sort sort);
+    List<UserP> findByUsername(String username, Sort sort);
 
 }

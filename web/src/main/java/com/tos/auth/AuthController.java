@@ -1,6 +1,6 @@
 package com.tos.auth;
 
-import com.tos.domain.User;
+import com.tos.domain.UserP;
 import com.tos.secruity.JwtAuthenticationRequest;
 import com.tos.secruity.JwtAuthenticationResponse;
 import io.swagger.annotations.ApiOperation;
@@ -47,7 +47,7 @@ public class AuthController {
     }
 
     @RequestMapping(value = "auth/register", method = RequestMethod.POST)
-    public User register(@RequestBody User addedUser) throws AuthenticationException{
+    public UserP register(@RequestBody UserP addedUser) throws AuthenticationException{
         return authService.register(addedUser);
     }
 }

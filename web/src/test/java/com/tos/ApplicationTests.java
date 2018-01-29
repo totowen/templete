@@ -40,8 +40,8 @@ public class ApplicationTests {
 //    @Autowired
 //    private RedisTemplate redisTemplate;
 
-    @Autowired
-    private JavaMailSender mailSender;
+//    @Autowired
+//    private JavaMailSender mailSender;
 
     @Before
     public void setUp() throws Exception {

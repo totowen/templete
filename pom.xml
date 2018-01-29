@@ -139,6 +139,11 @@
             <version>1.3.5.RELEASE</version>
         </dependency>
 
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>-->
+
         <!--MQ START-->
         <!--<dependency>-->
         <!--<groupId>org.springframework.boot</groupId>-->
@@ -223,6 +228,14 @@
             <artifactId>spring-context-support</artifactId>
         </dependency>
         <!--quartz END-->
+
+        <!--oracle START-->
+        <!--<dependency>
+            <groupId>com.github.noraui</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0.2</version>
+        </dependency>-->
+        <!--oracle END-->
 
     </dependencies>
 

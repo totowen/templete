@@ -20,7 +20,7 @@ public class Role_User {
     private Role role;
 
     @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name="user_id")
-    private User user;
+    @JoinColumn(name="user")
+    private UserP user;
 
 }

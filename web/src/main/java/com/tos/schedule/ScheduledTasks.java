@@ -1,6 +1,5 @@
 package com.tos.schedule;
 
-import com.tos.quartz.one.AddJob;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -43,8 +42,8 @@ public class ScheduledTasks {
      */
     private int flag = 0;
 
-    @Autowired
-    AddJob addJob;
+//    @Autowired
+//    AddJob addJob;
 
     @PostConstruct
     public void inits() throws Exception {
