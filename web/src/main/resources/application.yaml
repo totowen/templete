@@ -126,7 +126,7 @@ spring:
 #关闭安全认证校验 (false 为关闭，需要与com.tos.secruity.WebSecurityConfigd的@EnableGlobalMethodSecurity(prePostEnabled = false)配合使用才有效)
 management:
  security:
-  enabled: true
+  enabled: false
 
 ##########################JWT-start#############################
 # JWT

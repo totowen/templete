@@ -1,7 +1,7 @@
 #开发环境
 spring:
  datasource:
-  url: jdbc:mysql://localhost:3306/test
+  url: jdbc:mysql://139.129.109.113:3306/test
   username: root
   password: Jovaunn1
   driver-class-name: com.mysql.jdbc.Driver

@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true) //安全开关
+@EnableGlobalMethodSecurity(prePostEnabled = false) //安全开关
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
 
@@ -78,15 +78,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                         "/**/*.js"
                 ).permitAll()
                 // 对于获取token的rest api要允许匿名访问
-//                .antMatchers("/**").permitAll()
+                .antMatchers("/**").permitAll()
 
-//                .antMatchers("/v2/api-docs",
-//                        "/configuration/ui",
-//                        "/swagger-resources",
-//                        "/configuration/security",
-//                        "/swagger-ui.html",
-//                        "/webjars/**"
-//                ).permitAll()
+                .antMatchers("/v2/api-docs",
+                        "/configuration/ui",
+                        "/swagger-resources",
+                        "/configuration/security",
+                        "/swagger-ui.html",
+                        "/webjars/**"
+                ).permitAll()
 
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();
