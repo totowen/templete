@@ -1,5 +1,3 @@
-before_install:
-  - gem install fluentd
 
 language: java
 
