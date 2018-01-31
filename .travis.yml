@@ -1,6 +1,16 @@
 
+services:
+  - docker
+
 language: java
 
 jdk:
   - oraclejdk8
+  
+install:
+  - docker build -t templete .
+  - docker run -d -p 8010:8010 --name templete templete
+  
+script:
+  - docker ps | grep -q templete
   
