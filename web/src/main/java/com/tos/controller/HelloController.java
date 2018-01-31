@@ -17,7 +17,7 @@ public class HelloController {
     @RequestMapping(value = "/hello",method = {RequestMethod.GET,RequestMethod.POST})
     public String index(String str) throws MyException {
         System.out.println(str);
-        throw new MyException("我错的了");
+        throw new MyException("我错了");
     }
 
     @RequestMapping(value = "/site",method = RequestMethod.GET)
