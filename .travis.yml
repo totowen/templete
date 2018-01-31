@@ -7,10 +7,13 @@ language: java
 jdk:
   - oraclejdk8
   
-install:
-  - docker build -t templete .
-  - docker run -d -p 8010:8010 --name templete templete
   
-script:
-  - docker ps | grep -q templete
+after_success:
+# notify Docker Hub to make a new build
+  - >
+  [ "$TRAVIS_BRANCH" == "master" ]
+  && curl -X POST -H "Content-Type: application/json"
+  --data '{"docker_tag_name": "latest"}'
+  https://registry.hub.docker.com/u/totowen/templete/trigger/$DOCKER_HUB_TOKEN/
+
   
